@@ -64,6 +64,7 @@
 \usepackage[super]{nth}
 \usepackage{multicol}
 \usepackage[T1]{fontenc}
+\usepackage{textcomp}
 \usepackage{gensymb}
 
 
@@ -448,14 +449,16 @@ We have attempted to addresses these concerns by modeling the backside irradianc
 \section{Bifacial Performance Model}
 The bifacial and mono-facial performance models are similar, but with the additional step of calculating the backside irradiance and combining it with the front.  An additional module characteristic, bifaciality ($B$) accounts for the difference in the conversion efficiency between the front and back surfaces, by comparing the maximum power, measured at STC, from each surface separately.
 
+% Eq. 1
 \begin{equation}
 B=\frac{P_{mpp,STC,back}}{P_{mpp,STC,front}}=\frac{\eta_{STC,back}}{\eta_{STC,front}}
 \end{equation}
 
 Inside the module, irradiance from both sides is converted to carriers that generate current in the cells, so the front and back side irradiances are combined and considered together.  Factors are used to account for losses due to shading and mismatch, $K_{shade}$ and $K_{mismatch}$, as well as possible transmission, $K_{transmit}$, around and through the module.  The total irradiance is then given by the sum of the front, Efront, and back, Eback, sides with the bifaciality and other factors applied.
 
+% Eq. 2
 \begin{equation}
-E_{front} + E_{back} B \left(1+K_{shade}\right)\left(1+K_{transmit}\right)
+E_{front} + E_{back} B \left(1 + K_{shade}\right)\left(1 + K_{transmit}\right)
 \end{equation}
 
 Not shown in (2) are the incidence angle modifiers ($IAM$) applied to the beam components of the front and back irradiance before summation. A spectral adjustment factor may be applied to the sum to get the effective irradiance.  The mismatch factor is applied after the effective irradiance has been converted to power.
@@ -469,48 +472,46 @@ Similar to other models \cite{Marion2017}, \cite{Anoma2017}, we treat both the f
 \caption{Two-dimensional infinitely long PV racks at tilt, $\beta$, each of length $H$, separated by distance $P$.  The vertical dashed lines are parallel to the z-axis, the arrow to the left is the y-axis, and the x-axis points into the page, forming a right-hand coordinate system.  The projection of the solar angle on the y-z plane is $\phi$. The shaded and illuminated regions beneath the racks are shown as $x$ and $y$, respectively.}
 \end{figure}
 
-We calculate backside irradiance by treating it as a surface tilted by the supplement of the front surface, and an azimuth that is rotated 180\degree around the zenith from the front surface.  The irradiance components for both surfaces can be calculated using any of the transposition models.  Fig. 2 and 3 show the irradiance components for the front and back surfaces of a PV rack calculated using several transposition models from pvlib-python \cite{Holmgren2018} with predicted clear sky irradiance at a latitude and longitude of (37.85\degree, -122.25\degree) on the morning of Jan. 1st, 2017.  The front surface is tilted 20\degree at an azimuth of 250\degree, so the back surface is tilted at 160\degree and the corresponding reference frame is at an azimuth of 70\degree.  The diffuse components are non-zero starting at sunrise at 7:25 PST, but the direct component doesn’t strike the front surface until 8:35 PST because it’s on the back side.
+We calculate backside irradiance by treating it as a surface tilted by the supplement of the front surface, and an azimuth that is rotated 180\degree\ around the zenith from the front surface.  The irradiance components for both surfaces can be calculated using any of the transposition models.  Fig. 2 and 3 show the irradiance components for the front and back surfaces of a PV rack calculated using several transposition models from pvlib-python \cite{Holmgren2018} with predicted clear sky irradiance at a latitude and longitude of (37.85\degree, -122.25\degree) on the morning of Jan. 1st, 2017.  The front surface is tilted 20\degree\ at an azimuth of 250\degree, so the back surface is tilted at 160\degree\ and the corresponding reference frame is at an azimuth of 70\degree.  The diffuse components are non-zero starting at sunrise at 7:25 PST, but the direct component doesn’t strike the front surface until 8:35 PST because it’s on the back side.
 
-\subsection{ Equations }
-Equations should be centered in the column and numbered sequentially. Place the equation number to the right of the equation within a parenthesis, with right justification within its column. An example would be
+% Fig. 1
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{frontside_transposition.png}
+\caption{Predicted plane of array components using different transposition models on the front surface of a rack tilted at 20\degree\ facing 250\degree\ and located at a latitude and longitude of (37.85\degree, -122.25\degree) on Jan. 1st, 2017.  The top panel shows direct irradiance, the middle shows combined diffuse irradiance from both sky and ground, and the bottom panel shows the total global irradiance on the plane of the array.}
+\end{figure}
+
+% Fig. 2
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{backside_transposition.png}
+\caption{Predicted plane of array components using different transposition models on the back surface of a rack tilted at 160\degree\ facing 70\degree\ and located at a latitude and longitude of (37.85\degree, -122.25\degree) on Jan. 1st, 2017.  The top panel shows direct irradiance, the middle shows combined diffuse irradiance from both sky and ground, and the bottom panel shows the total global irradiance on the plane of the array.}
+\end{figure}
+
+Notice that the backside diffuse component is significantly overestimated because it doesn’t consider shading of the ground by the PV rack itself or obstruction of sky from the ground due to PV rack.
+
+\subsection{ Ground Reflection with Shade }
+Shading on the ground by the PV rack and the obstruction of the sky by the PV rack both reduce the reflected irradiance from the ground.  The diffuse component of the irradiance on the back surface in Fig. 3 contains contributions from both the sky and ground reflection.  The ground reflection incident on the back plane of array, $POA_{back,gnd}$, assuming no shading and no blocking, is given by a well-known relation of the global horizontal irradiance ($GHI$), the ground albedo ($\rho$), and the view factor from the ground to the PV surface, $F_{gnd,pv} = \frac{\left(1 – \cos\beta\right)}{2}$ \cite{Marion2017}.
+
+%Eq. 3
 \begin{equation}
-V_{OC}=\frac{1}{\beta}ln\left(\frac{I_L}{I_S}+1\right)
+POA_{back,gnd} = \rho GHI \frac{\left(1 – \cos \beta \right)}{2}
 \end{equation}
-\emph{Make sure that any subscripts in your equations are legible and are not too
-small to read!} When referring to an equation, use the number within
-parenthesis. For example, you would usually refer to the first
-equation as (1) rather than equation (1). If possible, use the Symbol
-font for all special characters.%, or better yet, use Equation Editor or
-%MathType. 
-The paragraph description of the line containing the
-equation should be set for 6 points before and 6 points after. The
-paragraph spacing will need to be set to ``single'' rather than ``exactly
-12 point'' so that the height will autoscale to fit the equation.
 
-\section{Figures and Tables}
-The use of color in figures and photos is recommended.  Keep in mind that the proceedings will only be produced in electronic format (DVD).  There will not be a hardbound version of the proceedings.  Please consider the use of different line styles (dashes, dots, etc.) in plots to ensure clarity.  See example.  Please use jpg or png format for all images and compress the size.
+We can account for the shading on the ground by calculating the unshaded fraction of the ground between each pair of rows, $F_{sky,gnd}$, which is just the fraction $\frac{y}{P}$, from Fig. 1, and assuming that direct irradiance is only incident on the unshaded ground.
 
-Most of the following applies to Microsoft Word.  Figures should utilize as much of the column width as possible in order to maximize legibility. Use a sans serif font, such as Helvetica. Helvetica is larger and much easier to read than Times. Using 8- to 10-point Helvetica usually results in a legible figure. \emph{Do not use any font smaller than 8-point!} It must be legible. When referring to a figure, use the abbreviation Fig. followed by its number. Place figure captions directly below each figure. Use
-9-point Times with the paragraph spacing set at ``exactly 10 points.'' Set a tab at 0.5 inch. Type ``Fig. \#.'' (\# is the numeral) then tab over to the 0.5 inch mark before beginning the text of the figure caption. Note that figure captions are always (left and right) justified, rather than centered, even if they are less than a single full line in length. See the caption for Fig. 1.
+%Eq. 4
+\begin{equation}
+F_{sky,gnd} = 1 - \min(0,\ GCR \left| \cos \beta + \sin \beta \tan \phi \right|)
+\end{equation}
 
-Within \LaTeX, there is basically only one option for placing figures
-within your paper.  Often the easiest way is to insert them into the
-top of the next column.
-%Within Microsoft Word there are several options for placing figures
-%within your paper. Often the easiest is to insert them between
-%existing paragraphs allowing the figures to remain in that relative
-%position. The paragraph description where the figure is inserted must
-%be set to ``single'' spacing rather than ``exactly 12 points'' in
-%order to allow the line to autoscale in height to display the entire
-%figure. Some disadvantages of this approach are that you don't have
-%total flexibility in placing figures, and that the figures will move
-%as text is inserted or deleted in any part of the document before the
-%figure. If you elect to use this approach, it is recommended that you
-%nearly complete the editing of your text before inserting any
-%figures. Remember to allow room for them, however. Then begin
-%inserting figures starting from the beginning of your document. 
-Do not lump all figures at the end of the paper!
-If you have difficulties with the titles on your figures, you can always elect to add in the titles as separate text boxes, rather than importing the titles with the graph. This is sometimes helpful in getting a lengthy vertically-oriented title to display correctly.
+Then the fraction of the shaded part is $1 – F_{sky,gnd}$.  The ground coverage ratio, $GCR$, is the ratio of the rack height to spacing, $\frac{H}{P}$, from Fig. 1.  The projected solar angle also has a familiar expression using solar zenith, $\theta$, solar azimuth, $\gamma$, and the orientation of the PV surface, $\gamma_{surface}$.
+
+%Eq. 5
+\begin{equation}
+\tan \phi = \cos \left(\gamma - \gamma_{surface} \right) \tan \theta
+\end{equation}
+
 
 %\begin{figure}
 %%\includegraphics {figure_temp.epsi}
