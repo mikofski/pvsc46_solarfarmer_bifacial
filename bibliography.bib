@@ -1,0 +1,57 @@
+@inproceedings{Mikofski_8547323,
+abstract = {Accurate performance prediction of large PV systems with shading is challenging because computational complexity increases with system size. Solar Farmer is a new PV performance model with 3-D shading. Comparing predictions with measurements from the NIST PV test bed we observed a decrease in the annual difference of 17{\%} between module and submodule shading. By varying the resolution of shading from module to cell level, we also determined that 5 points persubmodule, resulting in a 0.5{\%} annual difference, was sufficient to accurately predict performance of shaded systems. Therefore, a balance of accuracy and computational expense was achieved allowing performance predictions of large PV systems with shade.},
+author = {Mikofski, Mark A and Lynn, Matthew and Byrne, James and Hamer, Mike and Neubert, Anja and Newmiller, Jeff},
+booktitle = {2018 IEEE 7th World Conference on Photovoltaic Energy Conversion (WCPEC) (A Joint Conference of 45th IEEE PVSC, 28th PVSEC {\&} 34th EU PVSEC)},
+doi = {10.1109/PVSC.2018.8547323},
+file = {:C$\backslash$:/Users/mikm/Documents/Mendeley Desktop/Mikofski et al/2018 IEEE 7th World Conference on Photovoltaic Energy Conversion (WCPEC) (A Joint Conference of 45th IEEE PVSC, 28th PVSEC {\&} 34th EU PVSEC)/Mikofski et al. - 2018 - Accurate Performance Predicti.pdf:pdf},
+isbn = {978-1-5386-8529-7},
+issn = {0160-8371},
+keywords = {3D shading,Arrays,Computational modeling,Geometry,Inverters,Mathematical model,Meteorology,NIST,NIST PV test bed,PV performance model,PV systems,Solar Farmer,computational complexity,mismatch,performance,photovoltaic power systems,shaded systems,shading,solar cells,submodule mismatch calculation,submodule shading},
+month = {jun},
+pages = {3635--3639},
+publisher = {IEEE},
+title = {{Accurate Performance Predictions of Large PV Systems with Shading using Submodule Mismatch Calculation}},
+url = {https://ieeexplore.ieee.org/document/8547323/},
+year = {2018}
+}
+
+@article{Marion2017,
+abstract = {We describe and compare two methods for modeling irradiance on the back surface of rack-mounted bifacial PV modules: view factor models and ray-tracing simulations. For each method we formulate one or more models and compare each model with irradiance measurements and short circuit current for a bifacial module mounted a fixed tilt rack with three other similarly sized modules. Our analysis illustrates the computational requirements of the different methods and provides insight into their practical applications. We find a level of consistency among the models which indicates that consistent models may be obtained by parameter calibrations},
+author = {Marion, B and MacAlpine, S and Deline, C and Asgharzadeh, A and Toor, F and Riley, D and Stein, J and Hansen, C},
+doi = {No. NREL/CP-5J00-67847},
+file = {:C$\backslash$:/Users/mikm/Documents/Mendeley Desktop/Marion et al/IEEE 44th Photovoltaic Specialists Conference (PVSC)/Marion et al. - 2017 - A practical irradiance model for bifacial PV modules.pdf:pdf},
+journal = {IEEE 44th Photovoltaic Specialists Conference (PVSC)},
+keywords = {Analysis,Arrays,Bifacial PV,Bifacial PV module,Bifacial module,Computational modeling,Current measurement,Data models,Integrated circuit modeling,Laboratories,MODULES,Module,PV module,Photovoltaic,Short circuit current,a,bifacial,calibration,current,irradiance,irradiance measurement,irradiance model analysis,model,modeling,models,parameter calibration,rack-mounted bifacial PV module,ray tracing,ray-tracing simulation,raytracing,short-circuit currents,simulation,simulations,solar cells,sunlight,surface,view factor,view factor model},
+number = {June},
+title = {{A practical irradiance model  for bifacial PV modules}},
+year = {2017}
+}
+
+@inproceedings{Anoma2017,
+abstract = {In this paper, we use a model based on view factors to estimate the irradiance incident on both surfaces of a singleaxis tracker PV array for given direct and diffuse light components of the sky dome. We describe the mathematical formulation of the view factor model that assumes a 2D tracker geometry with Lambertian surfaces while accounting for reflections from all surrounding surfaces. The model allows specifically to calculate the incident irradiance on the back surface of PV modules as well as the diffuse shading effects caused by the presence of neighboring tracker rows in a PV array. We present preliminary results on an experimental validation of the view factor model.},
+address = {Washington, DC},
+author = {Anoma, Marc Abou and Jacob, David and Bourne, Ben C and Scholl, Jonathan A and Riley, Daniel M and Hansen, Clifford W},
+booktitle = {44th IEEE Photovoltaic Specialists Conference (PVSC)},
+doi = {10.1109/PVSC.2017.8366704},
+file = {:C$\backslash$:/Users/mikm/Documents/Mendeley Desktop/Anoma et al/44th IEEE Photovoltaic Specialists Conference (PVSC)/Anoma et al. - 2017 - View Factor Model and Validation for Bifacial PV and Diffuse Shade on Single-Axis Trackers.pdf:pdf},
+publisher = {IEEE},
+title = {{View Factor Model and Validation for Bifacial PV and Diffuse Shade on Single-Axis Trackers}},
+url = {https://ieeexplore.ieee.org/document/8366704},
+year = {2017}
+}
+
+@article{Holmgren2018,
+abstract = {pvlib python is a community-supported open source tool that provides a set of functions and classes for simulating the performance of photovoltaic energy systems. pvlib python aims to provide reference implementations of models relevant to solar energy, including for example algorithms for solar position, clear sky irradiance, irradiance transposition, DC power, and DC-to-AC power conversion. pvlib python is an important component of a growing ecosystem of open source tools for solar energy (William F. Holmgren, Hansen, Stein, {\&} Mikofski, 2018). pvlib python is developed on GitHub by contributors from academia, national laboratories , and private industry. pvlib python is released with a BSD 3-clause license allowing permissive use with attribution. pvlib python is extensively tested for functional and algorithm consistency. Continuous integration services check each pull request on multiple platforms and Python versions. The pvlib python API is thoroughly documented and detailed tutorials are provided for many features. The documentation includes help for installation and guidelines for contributions. The documentation is hosted at readthe-docs.org as of this writing. A Google group and StackOverflow tag provide venues for user discussion and help. The pvlib python API was designed to serve the various needs of the many subfields of solar power research and engineering. It is implemented in three layers: core functions, the Location and PVSystem classes, and the ModelChain class. The core API consists of a collection of functions that implement algorithms. These algorithms are typically implementations of models described in peer-reviewed publications. The functions provide maximum user flexibility, however many of the function arguments require an unwieldy number of parameters. The next API level contains the Location and PVSystem classes. These abstractions provide simple methods that wrap the core function API layer. The method API simplification is achieved by separating the data that represents the object (object attributes) from the data that the object methods operate on (method arguments). For example, a Location is represented by a latitude, longitude, elevation, timezone, and name, which are Location object attributes. Then a Location object method operates on a datetime to get the corresponding solar position. The methods combine these data sources when calling the function layer, then return the results to the user. The final level of API is the ModelChain class, designed to simplify and standardize the process of stitching together the many modeling steps necessary to convert a time series of weather data to AC solar power generation, given a PV system and a location.},
+author = {{F. Holmgren}, William and {W. Hansen}, Clifford and {A. Mikofski}, Mark},
+doi = {10.21105/joss.00884},
+file = {:C$\backslash$:/Users/mikm/Documents/Mendeley Desktop/F. Holmgren, W. Hansen, A. Mikofski/Journal of Open Source Software/F. Holmgren, W. Hansen, A. Mikofski - 2018 - pvlib python a python package for modeling solar energy systems.pdf:pdf},
+issn = {2475-9066},
+journal = {Journal of Open Source Software},
+month = {sep},
+number = {29},
+pages = {884},
+title = {pvlib python: a python package for modeling solar energy systems},
+url = {https://joss.theoj.org/papers/41187535cad22dd4b076c89b72f874b1 http://joss.theoj.org/papers/10.21105/joss.00884},
+volume = {3},
+year = {2018}
+}

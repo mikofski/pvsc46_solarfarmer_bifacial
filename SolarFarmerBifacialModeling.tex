@@ -371,8 +371,8 @@
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{ \IEEEauthorblockN{\large William Shockley, Hans Queisser, and William R. Cherry   (List authors on this line using 12 point Times \\font -- use a second line if necessary)} \\
-\IEEEauthorblockA{\large Institute Name, City, State/Region, Mail/Zip Code, Country (authors' affiliation(s) listed here in 12 point\\ Times font use a second line if necessary)}}
+\author{ \IEEEauthorblockN{\large Mark A. Mikofski, Renn Darawali, Mike Hamer, Anja Neubert, and Jeff Newmiller} \\
+\IEEEauthorblockA{\large DNV GL, Oakland, CA, 94612, USA}}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -411,7 +411,7 @@
 
 \begin{abstract}
 %\boldmath
-An abstract in the two-column format is required for the manuscript. Use 9 point Times New Roman Bold font for the abstract. Set your line spacing to be 10 points rather than single space. Indent the first line by 0.125 inches and type the word ``Abstract'' in 9 point Times New Roman Bold Italic. This should be followed by two spaces, a long dash (option / shift / minus), two spaces, and then the first word of your abstract (as shown above). Please try to keep the length of your abstract to 100 words or less. Times font is an acceptable substitute for Times New Roman font. After the abstract, you should list a few key words that describe your paper. Typically, you should list about 5 to 7 key words, in alphabetical order, using 9 point Times New Roman Bold font.
+Bifacial modules are being deployed at large PV systems, but their performance is still uncertain, increasing financial risk for developers, owners, and investors.  Bifacial modules have the potential to increase energy output, but there are only a few PV system models available to predict their performance.  To address the opportunity that bifacial modules present, we have developed a bifacial performance model and integrated it into a full PV system model to estimate the backside irradiance and combine it with the front side to predict the net power produced including mismatch from shading on the front surface and predict the increase in energy output.  A bifacial gain of 9\% was observed for a typical PV system configuration.  Comparison with other bifacial models shows similar results.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -420,7 +420,7 @@ An abstract in the two-column format is required for the manuscript. Use 9 point
 % of the abstract to achieve this. Many IEEE journals/conferences frown on
 % math in the abstract anyway.
 \begin{IEEEkeywords}
-amorphous materials, charge carrier lifetime, photovoltaic cells, silicon.
+bifacial, shading, system performance, view factor.
 \end{IEEEkeywords}
 % no keywords
 
@@ -440,63 +440,10 @@ amorphous materials, charge carrier lifetime, photovoltaic cells, silicon.
 
 
 \section{Introduction}
-Please follow these instructions carefully.  Papers not meeting these guidelines may be excluded from the conference proceedings.  These instructions have been formatted in the manner in which you should prepare your manuscript; you may use this TeX document as a template.  Please use this as an example.  For details or clarification, please contact the Publications Chair at \url{Publications@ieee-pvsc.org}. 
+A bifacial PV module collects irradiance from both the front and back surfaces.  Therefore, bifacial modules collect more irradiance than mono-facial modules and can potentially produce more power.  However, there are many uncertainties that affect the performance of bifacial modules.  For example, the conversion efficiency of the backside differs from the front.  Reflection from the ground and shade cast by module framing and system structures cause a non-uniform distribution of backside irradiance, which causes electrical mismatch.
 
-Please read through this entire template before you start using it to create your paper! This will save you and the PVSC considerable time. A contributor should remember that:
-\hfil\break
-1) Deadline to submit this paper is \textbf{June 3, 2019!}\\
-2) Manuscripts must be submitted electronically to the conference website (\url{http://www.ieee-pvsc.org}).  Manuscripts must be submitted in either Microsoft Word or PDF format.  No hardcopy is required.  If you submit a Microsoft Word document, it will be converted to PDF format.  Be sure to doownload and view this PDF document to ensure proper conversion.  \\
-3) If the manuscript is not submitted by the \textbf{June 3, 2019!}\\ deadline, presentation and publication will not be permitted.  In addition, no manuscript will be published without presentation at the conference.  PVSC FOLLOWS A STRICT NO PAPER-NO PODIUM AND NO PODIUM-NO PAPER RULE.  Should you have any difficulty with the electronic submission process, please contact SPLTrak at \url{help@SPLTrak.com}.\\ 
-4) All papers are limited to eight (8) pages (including all figures) and 2 MB file size.\\
-5)	You should employ this format. This document is being made available as a template for your convenience. If you elect not to use this template, please remember that you must still adhere to the general guidelines embodied in this document concerning, but not limited to, font size, margin size, page limits, file size, etc.\\
-\begin{table*}
-\centerline { TABLE 1  } 
-\vskip5pt
-\centerline { \normalsize \textsc{Summary of Typographical Settings}}
-\vskip2pt
-\centerline{
-\vbox{\offinterlineskip
-\hrule
-%\vskip2pt\hrule\vskip2pt
-% Leading & means preamble template repeats infinitely. p.241 TeX Book.
-\halign{&\vrule#&
-\strut\quad#\hfil\quad\cr
-%Use either first and third lines following this description, OR the
-%second line.  The first choice is used when all vertical rules go to the
-%top of the first horizontal line of the table.  The second choice below
-%(with the \strut) is used when there are column headings that span
-%more than one column.  The \strut in that column line will not have the
-%vertical tic marks in the horizontal rule.  Note that a vrule is also
-%considered a column, so when using \multispanx, x is the number of
-%all columns including the ``vrule.'' 
-%height2pt&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&\cr
-&\strut &&\multispan5\hfil {\bf Font Specifics}\hfil&&\multispan9\hfil {\bf Paragraph Description}\hfil &\cr
-%&\omit &&\multispan5\hfil {\bf Font Specifics}\hfil&&\multispan9\hfil {\bf Paragraph Description}\hfil &\cr
-&{\bf Section}&&\multispan5\hfil (Times Roman unless
-specified)\hfil&&\multispan5\hfil spacing (in points)\hfil &&
-alignment&&indent&\cr
-&\omit&&style&&size&&special&&line&&before&&after&&\omit&&(in inches)&\cr
-height2pt&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&\cr
-\noalign{\hrule}
-height2pt&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&\cr
-%\noalign{\vskip2pt\hrule\vskip2pt}
-%\omit&\omit&\omit&\omit\cr
-&Title&&plain&&18&&none&&single&&6&&6&&centered&&none&\cr
-&Autohr List&&plain&&12&&none&&single&&6&&6&&centered&&none&\cr
-&Affiliations&&plain&&12&&none&&single&&6&&6&&centered&&none&\cr
-&Abstract&&bold&&9&&none&&exactly 10&&0&&0&&justified&&0.125 $1^{st}$ line&\cr
-&Headings&&plain&&10&&small caps&&exactly 12&&18&&6&&centered&&none&\cr
-&Subheadings&&italic&&10&&none&&exactly 12&&6&&6&&left&&none&\cr
-&Body Paragraphs&&plain&&10&&none&&exactly 12&&0&&0&&justified&&0.125 $1^{st}$ line&\cr
-&Equations&&\multispan5 \hfil Symbol font for special characters
-\hfil&&single&&6&&6&&centered&&none&\cr
-&Figures&&\multispan5 \hfil 8 to 10 point sans serif (Helvetica)\hfil&&single&&0&&0&&centered&&none&\cr
-&Figure Captions&&plain&&9&&none &&10&&0&&0&&justified&&none, tab at 0.5&\cr
-&References&&plain&&9&&none&&10&&0&&0&&justified&&0.25 hanging&\cr
-height2pt&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&&\omit&\cr}
-\hrule}}
-\label{table1}
-\end{table*}
+We have attempted to addresses these concerns by modeling the backside irradiance and integrating it into SolarFarmer \cite{Mikofski_8547323}, a full PV system performance model.  This paper reports our findings.  It is divided into two parts.  The first part discusses the bifacial model.  The second part describes a comparison study between PV system predictions using the bifacial model and other existing tools.\\
+
 
 \section{Detailed Text Formatting}
 Use a two column format.  All paragraphs of text, including the abstract, figure captions, and references, should be justified at the left and the right edges.
@@ -598,11 +545,11 @@ to display. It is usually best to place these figures and tables at
 the top, rather than in the middle or bottom of a page. Tables should be entered within a single column if this can be done cleanly, without the entry becoming too crowded.
 
 \section{Citing Previous Work}
-When referencing a journal article \cite{Yamaguchi}, a conference
-digest article \cite{Hovel} or a book \cite{Fahrenbruch}, place the reference numbers within square
-brackets. To simultaneously cite these references \cite{Yamaguchi} - \cite{Fahrenbruch} use the format just demonstrated. The reference list is the last section and references are listed in the order cited. Use 9 point Times. The paragraph description is set for a line spacing of exactly 10 points with 0 point spacing before and after. A 0.25 inch hanging indention should be specified. 
+When referencing a journal article \cite{Mikofski_8547323}, a conference
+digest article \cite{Mikofski_8547323} or a book \cite{Mikofski_8547323}, place the reference numbers within square
+brackets. To simultaneously cite these references \cite{Mikofski_8547323} - \cite{Mikofski_8547323} use the format just demonstrated. The reference list is the last section and references are listed in the order cited. Use 9 point Times. The paragraph description is set for a line spacing of exactly 10 points with 0 point spacing before and after. A 0.25 inch hanging indention should be specified. 
 
-Generally speaking, references should be very detailed. For journal articles, list all authors by initials and last name, the title of the paper in quotations (capitalizing only the first letter of the first word, unless it would be capitalized in a sentence, e.g., a proper noun), the journal name in italics, the volume number, the issue number, the page numbers, and the date. Use the examples provided \cite{Yamaguchi} - \cite{Fahrenbruch} as a guide. 
+Generally speaking, references should be very detailed. For journal articles, list all authors by initials and last name, the title of the paper in quotations (capitalizing only the first letter of the first word, unless it would be capitalized in a sentence, e.g., a proper noun), the journal name in italics, the volume number, the issue number, the page numbers, and the date. Use the examples provided \cite{Mikofski_8547323} - \cite{Mikofski_8547323} as a guide. 
 %Further information on LaTeX and TeX can be found in \cite{IEEEhowto:kopka} - \cite{knuth}. 
 
 % The following statement makes the two columns on the last page more
@@ -646,30 +593,31 @@ Following these instructions will improve the quality of your paper and the PVSC
 % http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
 % The IEEEtran BibTeX style support page is at:
 % http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
+\bibliography{IEEEabrv,C:/Users/mikm/Projects/pvsc46/bibliography}
 %
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-\small
 
-\bibitem {Yamaguchi}
-M. Yamaguchi, A. Khan, S.J. Taylor, M. Imaizumi, T. Hisamatsu, and S. Matsuda, ``A detailed model to improve the radiation-resistance of Si space solar cells,\emph{Fundamentals of Solar Cells} vol. 46, pp. 2133-2138, 1999.
+%\begin{thebibliography}{1}
+%\small
 
-\bibitem {Hovel}
-H. J. Hovel and J. M. Woodall, ``The effect of depletion region recombination currents on the efficiencies of Si and GaAs solar cells'', \emph {in 10th IEEE Photovoltaic Specialist Conference}, p. 25, 1973.
+%\bibitem {Yamaguchi}
+%M. Yamaguchi, A. Khan, S.J. Taylor, M. Imaizumi, T. Hisamatsu, and S. Matsuda, ``A detailed model to improve the radiation-resistance of Si space solar cells,\emph{Fundamentals of Solar Cells} vol. 46, pp. 2133-2138, 1999.
 
-\bibitem {Fahrenbruch}
-A. L. Fahrenbruch and R. H. Bube, \emph{Fundamentals of Solar Cells}, New York: Academic Press, 1983.
+%\bibitem {Hovel}
+%H. J. Hovel and J. M. Woodall, ``The effect of depletion region recombination currents on the efficiencies of Si and GaAs solar cells'', \emph {in 10th IEEE Photovoltaic Specialist Conference}, p. 25, 1973.
+
+%\bibitem {Fahrenbruch}
+%A. L. Fahrenbruch and R. H. Bube, \emph{Fundamentals of Solar Cells}, New York: Academic Press, 1983.
 
 %\bibitem{IEEEhowto:kopka}
 %H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
 %  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
 
-\end{thebibliography}
+%\end{thebibliography}
 %\smallskip
 %Note: For the Summary paper submission only, references to the authors own work must be redacted to preserve the new double-blind reviewing requirements.
 
