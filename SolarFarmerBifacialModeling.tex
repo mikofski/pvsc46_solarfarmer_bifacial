@@ -64,7 +64,7 @@
 \usepackage[super]{nth}
 \usepackage{multicol}
 \usepackage[T1]{fontenc}
-
+\usepackage{gensymb}
 
 
 % Some very useful LaTeX packages include:
@@ -445,24 +445,32 @@ A bifacial PV module collects irradiance from both the front and back surfaces. 
 We have attempted to addresses these concerns by modeling the backside irradiance and integrating it into SolarFarmer \cite{Mikofski_8547323}, a full PV system performance model.  This paper reports our findings.  It is divided into two parts.  The first part discusses the bifacial model.  The second part describes a comparison study between PV system predictions using the bifacial model and other existing tools.\\
 
 
-\section{Detailed Text Formatting}
-Use a two column format.  All paragraphs of text, including the abstract, figure captions, and references, should be justified at the left and the right edges.
+\section{Bifacial Performance Model}
+The bifacial and mono-facial performance models are similar, but with the additional step of calculating the backside irradiance and combining it with the front.  An additional module characteristic, bifaciality ($B$) accounts for the difference in the conversion efficiency between the front and back surfaces, by comparing the maximum power, measured at STC, from each surface separately.
 
-Please do not include page numbers, headers or footers.  Company logos should not be inserted into a header or footer.  \textbf{YOUR MANUSCRIPT WILL BE REJECTED IF THERE ARE PAGE NUMBERS, HEADERS OR FOOTERS.}  This is to allow IEEE to add their official footer information and allow for IEEE to determine page numbering if appropriate.
+\begin{equation}
+B=\frac{P_{mpp,STC,back}}{P_{mpp,STC,front}}=\frac{\eta_{STC,back}}{\eta_{STC,front}}
+\end{equation}
 
-For the Title, use 18-point Times (Roman) font. Its paragraph description should be set so that the line spacing is single with 6-point spacing before and 6-point spacing after. The font description for the Author List and Authors' Affiliation(s) should be 12-point Times. The paragraph descriptions should be set so that the line spacing is single with 6-point spacings before and after. Use an additional line spacing of 12 points before the beginning of the double column section, as shown above.
+Inside the module, irradiance from both sides is converted to carriers that generate current in the cells, so the front and back side irradiances are combined and considered together.  Factors are used to account for losses due to shading and mismatch, $K_{shade}$ and $K_{mismatch}$, as well as possible transmission, $K_{transmit}$, around and through the module.  The total irradiance is then given by the sum of the front, Efront, and back, Eback, sides with the bifaciality and other factors applied.
 
-Using 8.5 x 11-inch paper, the top margin is 0.75 inch, the bottom margin is 1 inch, and the left and right margins are
-0.625 inch. Except for Title, Authors and Affiliations, use a double column format. The column width is 3.5 inches and the column spacing is 0.25 inch.
+\begin{equation}
+E_{front} + E_{back} B \left(1+K_{shade}\right)\left(1+K_{transmit}\right)
+\end{equation}
 
-Each major section begins with a Heading in 10 point Times font centered within the column and numbered using Roman numerals (except for \textsc{Acknowledgment} and \textsc{References}), followed by a period, a single space, and the title using an initial capital letter for each word. The remaining letters are in \textsc{Small Capitals}. The paragraph description of the section heading line should be set for 18 points before, 6 points after, and the line spacing should be set to exactly 12 points.
+Not shown in (2) are the incidence angle modifiers ($IAM$) applied to the beam components of the front and back irradiance before summation. A spectral adjustment factor may be applied to the sum to get the effective irradiance.  The mismatch factor is applied after the effective irradiance has been converted to power.
 
-For the body of your paper, use 10-point Times font and set your line spacing at ``exactly 12 points'' with 0 points before and after. Indent each paragraph by 0.125 inches. 
+\subsection{ Backside Irradiance }
+Similar to other models \cite{Marion2017}, \cite{Anoma2017}, we treat both the front and back surfaces as infinitely long. Fig. 1 shows a two-dimensional sketch of the surfaces.
 
-Further details are provided in the remainder of this paper for specific situations.
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{2d_infinite_sheds.png}
+\caption{Two-dimensional infinitely long PV racks at tilt, $\beta$, each of length $H$, separated by distance $P$.  The vertical dashed lines are parallel to the z-axis, the arrow to the left is the y-axis, and the x-axis points into the page, forming a right-hand coordinate system.  The projection of the solar angle on the y-z plane is $\phi$. The shaded and illuminated regions beneath the racks are shown as $x$ and $y$, respectively.}
+\end{figure}
 
-\subsection{ Major Subsections}
-As shown, denote subsections with left justified 10-point Times Italic. Order them with capitalized alphabetic characters $(A, B,...)$. Follow the letter designation with a period, a single space, and then the subsection title capitalizing the first letter of each word. The paragraph description of the subsection heading is set to "exactly 12-point" line spacing with 6 points before and after.
+We calculate backside irradiance by treating it as a surface tilted by the supplement of the front surface, and an azimuth that is rotated 180\degree around the zenith from the front surface.  The irradiance components for both surfaces can be calculated using any of the transposition models.  Fig. 2 and 3 show the irradiance components for the front and back surfaces of a PV rack calculated using several transposition models from pvlib-python \cite{Holmgren2018} with predicted clear sky irradiance at a latitude and longitude of (37.85\degree, -122.25\degree) on the morning of Jan. 1st, 2017.  The front surface is tilted 20\degree at an azimuth of 250\degree, so the back surface is tilted at 160\degree and the corresponding reference frame is at an azimuth of 70\degree.  The diffuse components are non-zero starting at sunrise at 7:25 PST, but the direct component doesn’t strike the front surface until 8:35 PST because it’s on the back side.
+
 \subsection{ Equations }
 Equations should be centered in the column and numbered sequentially. Place the equation number to the right of the equation within a parenthesis, with right justification within its column. An example would be
 \begin{equation}
