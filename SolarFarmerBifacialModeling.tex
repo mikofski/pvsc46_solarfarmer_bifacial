@@ -491,7 +491,7 @@ We calculate backside irradiance by treating it as a surface tilted by the suppl
 Notice in the middle of Fig. 3 that the backside diffuse component is significantly overestimated because it doesn’t consider that the PV rack both shades the ground and blocks the sky, therefore reducing incident and reflected irradiance.
 
 \subsection{ Ground Reflection with Shade and Obstructions}
-The diffuse component of the irradiance on the back surface in Fig. 3 contains contributions from both the sky and ground reflection.  The ground reflection incident on the plane of array, $POA_{gnd}$, assuming no shading and no blocking, is given by the relation in (3) below with the global horizontal irradiance ($GHI$), the ground albedo ($\rho$), and the view factor from the ground to the PV surface, $F_{gnd,pv} = \frac{\left(1-\cos\beta\right)}{2}$ \cite{Marion2017}.
+The diffuse components of the irradiance on the front and back surfaces, shown in Fig. 2 and 3, contain contributions from both the sky and ground reflection.  The ground reflection incident on the plane of array, $POA_{gnd}$, assuming no shading and no blocking, is given by the relation in (3) below with the global horizontal irradiance ($GHI$), the ground albedo ($\rho$), and the view factor from the ground to the PV surface, $F_{gnd,pv} = \frac{\left(1-\cos\beta\right)}{2}$ \cite{Marion2017}.
 
 %Eq. 3
 \begin{equation}
@@ -512,7 +512,7 @@ The ground coverage ratio, $GCR$, is the ratio of the rack height to spacing, $\
 \tan \phi = \cos \left(\gamma - \gamma_{surface} \right) \tan \theta
 \end{equation}
 
-As shown in Fig. 4, the sky is blocked by the PV panels.  We can account for the blocked sky between each pair of rows by calculating the view factor of the sky from the ground, $F_{x \rightarrow sky}$ given by the angles $\psi_0(x)$ and $\psi_1\left(x\right)$ \cite{Marion2017}.
+As shown in Fig. 4, the view of sky from the ground is blocked by the PV panels.  We can account for the blocked sky between each pair of rows by calculating the view factor of the sky from the ground, $F_{x \rightarrow sky}$ given by the angles $\psi_0(x)$ and $\psi_1\left(x\right)$ \cite{Marion2017}.
 
 %Eq. 6
 \begin{equation}
@@ -536,73 +536,49 @@ Note in Fig. 4 the angles are both measured from the ground in opposite directio
 
 In (7), $\beta^\prime$ is the supplement of $\beta$ and $F_x$ is the fraction of the row spacing, $P$, from $x_0$ to $x$, in (7) and (8), $GCR^\prime=GCR+\frac{h}{P\sin\beta}$ to account for the height of the PV racks above the ground, $h$, and in (8), $F_y=1-F_x$ for convenience.
 
-As the PV rack height is increased, the ground near $x_0$ and $x_1$ can see the sky between adjacent rows, although they are blocked by the bottom of the panel closest to that point.  We can derive the limiting angles from the top to the bottom of each row and vice versa, $\psi_{top}\left(x=0\right)$ and $\psi_{bottom}\left(y=0\right)$ in Fig. 6.  Examining the combined view factors for several heights and GCR values, shown in Fig 5, it seems that the net view factor for the space between rows can be approximated as the average of the zero height view factors at $x_0$ and $x_1$.
+As the PV rack height is increased, the ground near $x_0$ and $x_1$ can see the sky between adjacent rows, although they are blocked by the bottom of the panel closest to that point.  We can derive the limiting angles from the top to the bottom of each row and vice versa, $\psi_{top}\left(x=0\right)$ and $\psi_{bottom}\left(y=0\right)$ in Fig. 6, and combine the contribution from adjacent rows.  Examining the combined view factors for several heights, tilts, and GCR values, shown in Fig 5, we observe that the integrated view factor for the space between rows does not vary with height, only GCR and tilt.  Therefore the zero-height view factor can be used, which simplifies the calculation.  The integrated view factors for the combinations of GCR and tilt are summarized in Table I.
+
+% Fig. 5
+\begin{figure*}
+\centering
+\includegraphics[width=18cm]{Fx-sky_v_tilt_gcr_h.png}
+\caption{View factor calculations of $F_{x \rightarrow sky}$ for different combinations of tilt, GCR, and height above the ground.  The view factor is on the vertical axis of each plot and the fraction of the spacing between rows is on the horizontal axis.  The row spacing, $P$, increases from 2 to 5-meters in each plot from the left to the right, and the tilt increases from 20\degree\ to 90\degree\ in each plot from top to bottom.  Each plot shows increasing height above the ground from 0 to 2-meters.  The legend shows the integrated view factor does not vary with height.  The trapezoid rule was used with 100 equally spaced points.}
+\end{figure*}
 
 \begin{table}
 \centerline { TABLE 1 } 
 \vskip5pt
-\centerline { \normalsize \textsc{Ground-Sky View Factor vs. Height}}
+\centerline { \normalsize \textsc{Ground-Sky View Factor vs. Tilt and GCR}}
 \vskip2pt
 \centerline{
 \vbox{\offinterlineskip
 \hrule
-%\vskip2pt\hrule\vskip2pt
 % Leading & means preamble template repeats infinitely. p.241 TeX Book.
 \halign{&\vrule#&
 \strut\quad#\hfil\quad\cr
-%Use either first and third lines following this description, OR the
-%second line.  The first choice is used when all vertical rules go to the
-%top of the first horizontal line of the table.  The second choice below
-%(with the \strut) is used when there are column headings that span
-%more than one column.  The \strut in that column line will not have the
-%vertical tic marks in the horizontal rule.  Note that a vrule is also
-%considered a column, so when using \multispanx, x is the number of
-%all columns including the ``vrule.'' 
 height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr
-%&\strut &&\multispan5\hfil {\bf Font Specifics}\hfil&&\multispan9\hfil {\bf Paragraph Description}\hfil &\cr
-%&\omit &&\multispan5\hfil {\bf Font Specifics}\hfil&&\multispan9\hfil {\bf Paragraph Description}\hfil &\cr
-%&{\bf Section}&&\multispan5\hfil (Times Roman unless
-%specified)\hfil&&\multispan5\hfil spacing (in points)\hfil &&
-%alignment&&indent&\cr
-&\omit&&style&&size&&special&&line&\cr
+&Tilt\ /\ GCR&&1.0&&0.67&&0.5&&0.4&\cr
 height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr
 \noalign{\hrule}
 height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr
-%\noalign{\vskip2pt\hrule\vskip2pt}
-%\omit&\omit&\omit&\omit\cr
-&Title&&plain&&18&&none&&single&\cr
-&Author List&&plain&&12&&none&&single&\cr
-&Affiliations&&plain&&12&&none&&single&\cr
-&Abstract&&bold&&9&&none&&exactly 10&\cr
-&Headings&&plain&&10&&small caps&&exactly 12&&\cr
-&Subheadings&&italic&&10&&none&&exactly 12&\cr
-&Body Paragraphs&&plain&&10&&none&&exactly 12&\cr
-&Figure Captions&&plain&&9&&none &&10&\cr
-&References&&plain&&9&&none&&10&\cr
+&20\degree&&0.16&&0.37&&0.52&&0.61&\cr
+&55\degree&&0.35&&0.49&&0.59&&0.65&\cr
+&90\degree&&0.41&&0.54&&0.62&&0.68&\cr
 height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr}
 \hrule}}
 \label{table1}
 \end{table}
 
-%\begin{figure}
-%%\includegraphics {figure_temp.epsi}
-%\epsfxsize=3.25in\epsfbox{figure1.eps}
-%\caption{ Estimated relationship between the time an author spends reading these instructions and the quality of the author's digest article.}
-%\end{figure}
+We split the GHI into the diffuse horizontal irradiance, $DHI$, in the shade, because we assume there is direct irradiance is only incident on the unshade ground.  Then the reflected irradiance from the ground with shade and blocked sky, $POA_{gnd,shade}$, incident on the front and back surfaces is the sum from shaded and unshaded ground, where $df=DHI/GHI$ is the diffuse ratio, $F_{sky,gnd}$ is the fraction of unshaded ground with incident direct irradiance, and $F_{x \rightarrow sky}$ is the integrated view factor of the sky visible from the ground between the rows.
 
-%\LaTeX accepts encapsulated post script files as figures.  Standard post script figures will not expand and contract to fill the designate area on the page. Encapsulated post script files will.  Thus, encapsulated post script files must obviously be only one page long.  It is often easy to convert a post script file to encapsulated post script.  In Linux this can be done with the command, ``ps2epsi.''
-%More flexibility is obtained in inserting figures if you can place
-%them exactly where you would like them to be on a page. This can be
-%accomplished by inserting the figure, selecting the figure, and then
-%choosing ``Format Picture\dots ''. Various settings allow you to place the figure at an absolute position on a page; specify if the text is supposed to flow around the figure or if the figure should move with the text, etc. If you elect to let the text flow around the figure, then remember that you will have to insert a separate text box for the caption, otherwise the figure caption is likely to become separated from the figure.
-%When importing a graph from Excel into Word, it is often helpful to
-%special-paste it in as a ``Picture (Enhanced Meta-file).'' This saves
-%file memory for Word documents. Be aware that the usual Copy
-%$\rightarrow $  Paste procedure will copy the entire Excel spreadsheet into your Word file. The Copy $\rightarrow$ Paste Special $\rightarrow$ Picture (Enhanced Metafile) command copies only the graph as a static picture. This is not a concern with PDF file submissions.
+%Eq. 9
+\begin{equation}
+POA_{gnd,shade} = POA_{gnd}\left(F_{sky,gnd} \left(1-df \right)F_{x \rightarrow sky} df\right)
+\end{equation}
 
-We can approximate the ground reflection from the shaded ground by applying the albedo to the diffuse horizontal irradiance, $DHI$.  Then the reflected irradiance from the ground with shade, $POA_{gnd,shade}$, incident on the back surface is the sum from shaded and unshaded ground, where $DHI/GHI$ is the diffuse ratio, $df$.  This doesn’t consider the obstruction by the adjacent rows of the view from the current row to the ground and sky.
+Note that this still doesn’t account for the obstruction by the adjacent rows of the view from the front and back PV surfaces to the ground and sky because the view factor of the ground in (3) only considers a single row. The next section will consider the obstruction by the adjacent rows.
 
-It is also important to consider the effect of the width of the sun on the fraction of shaded ground. The radius of the solar disc is about 4.65-milliradians or 0.266\degree\ which would decrease the size of the shadow by about 10-cm per meter as the height of the PV rack was increased.
+Another important consideration is the effect of the width of the sun on the fraction of shaded ground. The radius of the solar disc is about 4.65-milliradians or 0.266\degree\ which would decrease the size of the shadow by about 10-cm per meter as the height of the PV rack was increased. This effect is not considered in the current work.
 
 \section{Citing Previous Work}
 
