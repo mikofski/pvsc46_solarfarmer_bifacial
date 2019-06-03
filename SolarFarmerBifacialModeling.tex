@@ -488,30 +488,101 @@ We calculate backside irradiance by treating it as a surface tilted by the suppl
 \caption{Predicted plane of array components using different transposition models on the back surface of a rack tilted at 160\degree\ facing 70\degree\ and located at a latitude and longitude of (37.85\degree, -122.25\degree) on Jan. 1st, 2017.  The top panel shows direct irradiance, the middle shows combined diffuse irradiance from both sky and ground, and the bottom panel shows the total global irradiance on the plane of the array.}
 \end{figure}
 
-Notice that the backside diffuse component is significantly overestimated because it doesn’t consider shading of the ground by the PV rack itself or obstruction of sky from the ground due to PV rack.
+Notice in the middle of Fig. 3 that the backside diffuse component is significantly overestimated because it doesn’t consider that the PV rack both shades the ground and blocks the sky, therefore reducing incident and reflected irradiance.
 
-\subsection{ Ground Reflection with Shade }
-Shading on the ground by the PV rack and the obstruction of the sky by the PV rack both reduce the reflected irradiance from the ground.  The diffuse component of the irradiance on the back surface in Fig. 3 contains contributions from both the sky and ground reflection.  The ground reflection incident on the back plane of array, $POA_{back,gnd}$, assuming no shading and no blocking, is given by a well-known relation of the global horizontal irradiance ($GHI$), the ground albedo ($\rho$), and the view factor from the ground to the PV surface, $F_{gnd,pv} = \frac{\left(1 – \cos\beta\right)}{2}$ \cite{Marion2017}.
+\subsection{ Ground Reflection with Shade and Obstructions}
+The diffuse component of the irradiance on the back surface in Fig. 3 contains contributions from both the sky and ground reflection.  The ground reflection incident on the plane of array, $POA_{gnd}$, assuming no shading and no blocking, is given by the relation in (3) below with the global horizontal irradiance ($GHI$), the ground albedo ($\rho$), and the view factor from the ground to the PV surface, $F_{gnd,pv} = \frac{\left(1-\cos\beta\right)}{2}$ \cite{Marion2017}.
 
 %Eq. 3
 \begin{equation}
-POA_{back,gnd} = \rho GHI \frac{\left(1 – \cos \beta \right)}{2}
+POA_{gnd} = \rho GHI \frac{\left(1-\cos \beta \right)}{2}
 \end{equation}
 
-We can account for the shading on the ground by calculating the unshaded fraction of the ground between each pair of rows, $F_{sky,gnd}$, which is just the fraction $\frac{y}{P}$, from Fig. 1, and assuming that direct irradiance is only incident on the unshaded ground.
+The PV rack reduces the ground reflected irradiance both by shading the ground and blocking the sky.  We can account for shade on the ground by calculating the fraction of ground between each pair of rows, $F_{sky,gnd}$, with only incident direct irradiance. The fraction of unshaded ground is expressed in (4) as the ratio $\frac{y}{P}$, with unshaded ground $y$ and row spacing $P$ from Fig. 1.  The fraction of the shaded ground is then $1-F_{sky,gnd}$.
 
 %Eq. 4
 \begin{equation}
 F_{sky,gnd} = 1 - \min(0,\ GCR \left| \cos \beta + \sin \beta \tan \phi \right|)
 \end{equation}
 
-Then the fraction of the shaded part is $1 – F_{sky,gnd}$.  The ground coverage ratio, $GCR$, is the ratio of the rack height to spacing, $\frac{H}{P}$, from Fig. 1.  The projected solar angle also has a familiar expression using solar zenith, $\theta$, solar azimuth, $\gamma$, and the orientation of the PV surface, $\gamma_{surface}$.
+The ground coverage ratio, $GCR$, is the ratio of the rack height to spacing, $\frac{H}{P}$, from Fig. 1.  The projected solar angle on the vertical plane perpendicular to the rows is expressed in (5) using solar zenith, $\theta$, solar azimuth, $\gamma$, and the orientation of the PV surface, $\gamma_{surface}$.
 
 %Eq. 5
 \begin{equation}
 \tan \phi = \cos \left(\gamma - \gamma_{surface} \right) \tan \theta
 \end{equation}
 
+As shown in Fig. 4, the sky is blocked by the PV panels.  We can account for the blocked sky between each pair of rows by calculating the view factor of the sky from the ground, $F_{x \rightarrow sky}$ given by the angles $\psi_0(x)$ and $\psi_1\left(x\right)$ \cite{Marion2017}.
+
+%Eq. 6
+\begin{equation}
+F_{x \rightarrow sky} = \frac{\cos \psi_1\left(x \right) + \cos \psi_1\left(x \right)}{2}
+\end{equation}
+
+% Fig. 4
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{ground_sky_vf.png}
+\caption{Two dimensional view of a pair of adjacent rows at $x_0$ and $x_1$ separated by spacing $P$, tilted by angle $\beta$, of height $H$, and at height $h$ above the ground.  The view of the sky at point $x$ on the ground is subtended by angles $\psi_0(x)$ and $\psi_1\left(x\right)$.}
+\end{figure}
+
+Note in Fig. 4 the angles are both measured from the ground in opposite directions.  If one of the angles is replaced with its supplement the view factor in (6) would be a difference of cosines instead of the sum, because $\cos \left(\pi - \alpha\right) = -\cos \alpha$.  However, defining the angles this makes their derivation easier, so for any $x$ the angles are given as follows:
+
+%Eq. 7 & 8
+\begin{align}
+\tan \psi_0 &= \frac{\sin \beta^\prime}{\frac{F_x}{GCR^\prime} + \cos \beta^\prime}\\
+\tan \psi_1 &= \frac{\sin \beta}{\frac{F_y}{GCR^\prime} + \cos \beta}
+\end{align}
+
+In (7), $\beta^\prime$ is the supplement of $\beta$ and $F_x$ is the fraction of the row spacing, $P$, from $x_0$ to $x$, in (7) and (8), $GCR^\prime=GCR+\frac{h}{P\sin\beta}$ to account for the height of the PV racks above the ground, $h$, and in (8), $F_y=1-F_x$ for convenience.
+
+As the PV rack height is increased, the ground near $x_0$ and $x_1$ can see the sky between adjacent rows, although they are blocked by the bottom of the panel closest to that point.  We can derive the limiting angles from the top to the bottom of each row and vice versa, $\psi_{top}\left(x=0\right)$ and $\psi_{bottom}\left(y=0\right)$ in Fig. 6.  Examining the combined view factors for several heights and GCR values, shown in Fig 5, it seems that the net view factor for the space between rows can be approximated as the average of the zero height view factors at $x_0$ and $x_1$.
+
+\begin{table}
+\centerline { TABLE 1 } 
+\vskip5pt
+\centerline { \normalsize \textsc{Ground-Sky View Factor vs. Height}}
+\vskip2pt
+\centerline{
+\vbox{\offinterlineskip
+\hrule
+%\vskip2pt\hrule\vskip2pt
+% Leading & means preamble template repeats infinitely. p.241 TeX Book.
+\halign{&\vrule#&
+\strut\quad#\hfil\quad\cr
+%Use either first and third lines following this description, OR the
+%second line.  The first choice is used when all vertical rules go to the
+%top of the first horizontal line of the table.  The second choice below
+%(with the \strut) is used when there are column headings that span
+%more than one column.  The \strut in that column line will not have the
+%vertical tic marks in the horizontal rule.  Note that a vrule is also
+%considered a column, so when using \multispanx, x is the number of
+%all columns including the ``vrule.'' 
+height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr
+%&\strut &&\multispan5\hfil {\bf Font Specifics}\hfil&&\multispan9\hfil {\bf Paragraph Description}\hfil &\cr
+%&\omit &&\multispan5\hfil {\bf Font Specifics}\hfil&&\multispan9\hfil {\bf Paragraph Description}\hfil &\cr
+%&{\bf Section}&&\multispan5\hfil (Times Roman unless
+%specified)\hfil&&\multispan5\hfil spacing (in points)\hfil &&
+%alignment&&indent&\cr
+&\omit&&style&&size&&special&&line&\cr
+height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr
+\noalign{\hrule}
+height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr
+%\noalign{\vskip2pt\hrule\vskip2pt}
+%\omit&\omit&\omit&\omit\cr
+&Title&&plain&&18&&none&&single&\cr
+&Author List&&plain&&12&&none&&single&\cr
+&Affiliations&&plain&&12&&none&&single&\cr
+&Abstract&&bold&&9&&none&&exactly 10&\cr
+&Headings&&plain&&10&&small caps&&exactly 12&&\cr
+&Subheadings&&italic&&10&&none&&exactly 12&\cr
+&Body Paragraphs&&plain&&10&&none&&exactly 12&\cr
+&Figure Captions&&plain&&9&&none &&10&\cr
+&References&&plain&&9&&none&&10&\cr
+height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr}
+\hrule}}
+\label{table1}
+\end{table}
 
 %\begin{figure}
 %%\includegraphics {figure_temp.epsi}
@@ -519,20 +590,6 @@ Then the fraction of the shaded part is $1 – F_{sky,gnd}$.  The ground coverag
 %\caption{ Estimated relationship between the time an author spends reading these instructions and the quality of the author's digest article.}
 %\end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=9cm]{image1.png}
-\caption{Example of readable plot using different colors and line styles for clarity.}
-\end{figure}
-
-Notice that prior to the graph, a single 12-point line is used to
-separate the preceding text from the graph. The equivalent of a blank
-line should exist between the bottom of the graph (the x-axis caption)
-and the figure caption. (In this particular case, there was no need to
-add a blank line between the x-axis label and the figure caption,
-because there was already adequate spacing provided by the image
-border.) After the figure caption, there should be a single 12-point
-blank line before the text resumes. 
 %\LaTeX accepts encapsulated post script files as figures.  Standard post script figures will not expand and contract to fill the designate area on the page. Encapsulated post script files will.  Thus, encapsulated post script files must obviously be only one page long.  It is often easy to convert a post script file to encapsulated post script.  In Linux this can be done with the command, ``ps2epsi.''
 %More flexibility is obtained in inserting figures if you can place
 %them exactly where you would like them to be on a page. This can be
@@ -542,18 +599,20 @@ blank line before the text resumes.
 %special-paste it in as a ``Picture (Enhanced Meta-file).'' This saves
 %file memory for Word documents. Be aware that the usual Copy
 %$\rightarrow $  Paste procedure will copy the entire Excel spreadsheet into your Word file. The Copy $\rightarrow$ Paste Special $\rightarrow$ Picture (Enhanced Metafile) command copies only the graph as a static picture. This is not a concern with PDF file submissions.
-If you decide to use color traces in your graphical data, be absolutely certain that there is no ambiguity about your graphical information when printed on a B\&W printer.
 
-Table I on the second page was inserted using ``Insert'', ``Text
-Box'', creating the text contained in Table I, and then formatting the
-text box using all the settings available under ``Format'', ``Text
-Box\dots ''. Table I also serves as an illustration of one of the rare
-instances when the double column format requirement can be
-violated. Certain figures and tables will require the full-page width
-to display. It is usually best to place these figures and tables at
-the top, rather than in the middle or bottom of a page. Tables should be entered within a single column if this can be done cleanly, without the entry becoming too crowded.
+We can approximate the ground reflection from the shaded ground by applying the albedo to the diffuse horizontal irradiance, $DHI$.  Then the reflected irradiance from the ground with shade, $POA_{gnd,shade}$, incident on the back surface is the sum from shaded and unshaded ground, where $DHI/GHI$ is the diffuse ratio, $df$.  This doesn’t consider the obstruction by the adjacent rows of the view from the current row to the ground and sky.
+
+It is also important to consider the effect of the width of the sun on the fraction of shaded ground. The radius of the solar disc is about 4.65-milliradians or 0.266\degree\ which would decrease the size of the shadow by about 10-cm per meter as the height of the PV rack was increased.
 
 \section{Citing Previous Work}
+
+% Fig. 5
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{next-row-view-factor-angles.png}
+\caption{Example of readable plot using different colors and line styles for clarity.}
+\end{figure}
+
 When referencing a journal article \cite{Mikofski_8547323}, a conference
 digest article \cite{Mikofski_8547323} or a book \cite{Mikofski_8547323}, place the reference numbers within square
 brackets. To simultaneously cite these references \cite{Mikofski_8547323} - \cite{Mikofski_8547323} use the format just demonstrated. The reference list is the last section and references are listed in the order cited. Use 9 point Times. The paragraph description is set for a line spacing of exactly 10 points with 0 point spacing before and after. A 0.25 inch hanging indention should be specified. 
