@@ -493,28 +493,28 @@ Notice in the middle of Fig. 3 that the backside diffuse component is significan
 \subsection{ Ground Reflection with Shade and Obstructions}
 The diffuse components of the irradiance on the front and back surfaces, shown in Fig. 2 and 3, contain contributions from both the sky and ground reflection.  The ground reflection incident on the plane of array, $POA_{gnd}$, assuming no shading and no blocking, is given by the relation in (3) below with the global horizontal irradiance ($GHI$), the ground albedo ($\rho$), and the view factor from the ground to the PV surface, $F_{gnd,pv} = \frac{\left(1-\cos\beta\right)}{2}$ \cite{Marion2017}.
 
-%Eq. 3
+% Eq. 3
 \begin{equation}
 POA_{gnd} = \rho GHI \frac{\left(1-\cos \beta \right)}{2}
 \end{equation}
 
 The PV rack reduces the ground reflected irradiance both by shading the ground and blocking the sky.  We can account for shade on the ground by calculating the fraction of ground between each pair of rows, $F_{sky,gnd}$, with only incident direct irradiance. The fraction of unshaded ground is expressed in (4) as the ratio $\frac{y}{P}$, with unshaded ground $y$ and row spacing $P$ from Fig. 1.  The fraction of the shaded ground is then $1-F_{sky,gnd}$.
 
-%Eq. 4
+% Eq. 4
 \begin{equation}
 F_{sky,gnd} = 1 - \min(0,\ GCR \left| \cos \beta + \sin \beta \tan \phi \right|)
 \end{equation}
 
 The ground coverage ratio, $GCR$, is the ratio of the rack height to spacing, $\frac{H}{P}$, from Fig. 1.  The projected solar angle on the vertical plane perpendicular to the rows is expressed in (5) using solar zenith, $\theta$, solar azimuth, $\gamma$, and the orientation of the PV surface, $\gamma_{surface}$.
 
-%Eq. 5
+% Eq. 5
 \begin{equation}
 \tan \phi = \cos \left(\gamma - \gamma_{surface} \right) \tan \theta
 \end{equation}
 
 As shown in Fig. 4, the view of sky from the ground is blocked by the PV panels.  We can account for the blocked sky between each pair of rows by calculating the view factor of the sky from the ground, $F_{x \rightarrow sky}$ given by the angles $\psi_0(x)$ and $\psi_1\left(x\right)$ \cite{Marion2017}.
 
-%Eq. 6
+% Eq. 6
 \begin{equation}
 F_{x \rightarrow sky} = \frac{\cos \psi_1\left(x \right) + \cos \psi_1\left(x \right)}{2}
 \end{equation}
@@ -528,7 +528,7 @@ F_{x \rightarrow sky} = \frac{\cos \psi_1\left(x \right) + \cos \psi_1\left(x \r
 
 Note in Fig. 4 the angles are both measured from the ground in opposite directions.  If one of the angles is replaced with its supplement the view factor in (6) would be a difference of cosines instead of the sum, because $\cos \left(\pi - \alpha\right) = -\cos \alpha$.  However, defining the angles this makes their derivation easier, so for any $x$ the angles are given as follows:
 
-%Eq. 7 & 8
+% Eq. 7 & 8
 \begin{align}
 \tan \psi_0 &= \frac{\sin \beta^\prime}{\frac{F_x}{GCR^\prime} + \cos \beta^\prime}\\
 \tan \psi_1 &= \frac{\sin \beta}{\frac{F_y}{GCR^\prime} + \cos \beta}
@@ -536,9 +536,16 @@ Note in Fig. 4 the angles are both measured from the ground in opposite directio
 
 In (7), $\beta^\prime$ is the supplement of $\beta$ and $F_x$ is the fraction of the row spacing, $P$, from $x_0$ to $x$, in (7) and (8), $GCR^\prime=GCR+\frac{h}{P\sin\beta}$ to account for the height of the PV racks above the ground, $h$, and in (8), $F_y=1-F_x$ for convenience.
 
-As the PV rack height is increased, the ground near $x_0$ and $x_1$ can see the sky between adjacent rows, although they are blocked by the bottom of the panel closest to that point.  We can derive the limiting angles from the top to the bottom of each row and vice versa, $\psi_{top}\left(x=0\right)$ and $\psi_{bottom}\left(y=0\right)$ in Fig. 6, and combine the contribution from adjacent rows.  Examining the combined view factors for several heights, tilts, and GCR values, shown in Fig 5, we observe that the integrated view factor for the space between rows does not vary with height, only GCR and tilt.  Therefore the zero-height view factor can be used, which simplifies the calculation.  The integrated view factors for the combinations of GCR and tilt are summarized in Table I.
+As the PV rack height is increased, the ground near $x_0$ and $x_1$ can see the sky between adjacent rows, although they are blocked by the bottom of the panel closest to that point.  We can derive the limiting angles from the top to the bottom of each row and vice versa, $\psi_{top}\left(x=0\right)$ and $\psi_{bottom}\left(y=0\right)$ in Fig. 5, and combine the contribution from adjacent rows.  Examining the combined view factors for several heights, tilts, and GCR values, shown in Fig. 6, we observe that the integrated view factor for the space between rows does not vary with height, only GCR and tilt.  Therefore the zero-height view factor can be used, which simplifies the calculation.  The integrated view factors for the combinations of GCR and tilt are summarized in Table I.
 
 % Fig. 5
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{next-row-view-factor-angles.png}
+\caption{The view of the sky and the ground from the surface of the PV at point $x$ are limited by the angles $\psi_{top}$ and $\psi_{bottom}$ to the top and bottom of the next row.}
+\end{figure}
+
+% Fig. 6
 \begin{figure*}
 \centering
 \includegraphics[width=18cm]{Fx-sky_v_tilt_gcr_h.png}
@@ -571,7 +578,7 @@ height2pt&\omit&&\omit&&\omit&&\omit&&\omit&\cr}
 
 We split the GHI into the diffuse horizontal irradiance, $DHI$, in the shade, because we assume there is direct irradiance is only incident on the unshade ground.  Then the reflected irradiance from the ground with shade and blocked sky, $POA_{gnd,shade}$, incident on the front and back surfaces is the sum from shaded and unshaded ground, where $df=DHI/GHI$ is the diffuse ratio, $F_{sky,gnd}$ is the fraction of unshaded ground with incident direct irradiance, and $F_{x \rightarrow sky}$ is the integrated view factor of the sky visible from the ground between the rows.
 
-%Eq. 9
+% Eq. 9
 \begin{equation}
 POA_{gnd,shade} = POA_{gnd}\left(F_{sky,gnd} \left(1-df \right)F_{x \rightarrow sky} df\right)
 \end{equation}
@@ -580,47 +587,128 @@ Note that this still doesn’t account for the obstruction by the adjacent rows 
 
 Another important consideration is the effect of the width of the sun on the fraction of shaded ground. The radius of the solar disc is about 4.65-milliradians or 0.266\degree\ which would decrease the size of the shadow by about 10-cm per meter as the height of the PV rack was increased. This effect is not considered in the current work.
 
-\section{Citing Previous Work}
+\subsection{View Factor Obstruction by Adjacent Row}
+The bottom of the next row obstructs the view of the ground from the PV surface, and the top of the next row obstructs the view of the sky.  The views from a point, $x$, on the PV surface are limited by the angles, $\psi_{top}$ and $\psi_{bottom}$, from the point to the top and bottom of the next row as shown in Fig. 5.  The POA components from the ground and sky already account for the view factor without the adjacent row.  The view factor of the ground for a single row was used in (3), and there's a similar expression for view factor of the sky, $F_{sky,pv}=\frac{\left(1+\cos\beta\right)}{2}$ \cite{Marion2017}. We need to adjust these view factors to account for the slice from $\beta$ to $\psi$, by the ratio of the blocked and unblocked views.
 
-% Fig. 5
+Adjustment to $F_{gnd,pv}$:
+
+% Eq. 10
+\begin{equation}
+F_{gnd,pv,row}\left(\psi_{bottom} \right) = \frac{\cos \psi_{bottom} - \cos \beta}{1-\cos\beta}
+\end{equation}
+
+Adjustment to $F_{sky,pv}$:
+
+% Eq. 11
+\begin{equation}
+F_{sky,pv,row}\left(\psi_{top} \right) = \frac{\cos \psi_{top} + \cos \beta}{1+\cos\beta}
+\end{equation}
+
+We can derive expressions for the angles to the top and bottom of the next row as a function of an arbitrary position $x$ on the PV surface.
+
+% Eq. 12 & 13
+\begin{align}
+\tan \psi_{top}\left(x \right) &= \frac{F_x GCR \sin \beta}{1 + F_x GCR \cos \beta}\\
+\tan \psi_{bottom}\left(x \right) &= \frac{F_y GCR \sin \beta}{1 - F_y GCR \cos \beta}
+\end{align}
+
+Fig. 7, 8, 9, and 10 show that the ground and sky view factor adjustments are nearly linear from the top to the bottom of the rack.  At the bottom of the PV surface, where $F_x=0$, the ground view factor adjustment is 1, and $\psi_{bottom}=0$.  Then, the ground view factor adjustment decreases by more than 50\% on the front surface in Fig. 7 but less than 10\% on the back surface in Fig. 8, as $x$ moves to the top of the panel.  At the top of the PV surface, where $F_x=1$, the sky view factor adjustment is 1, and the $\psi_{top}=0$.  Then the sky view factor adjustment decreases by less than 10\% on the front surface in Fig. 9, but more than 50\% on the back surface in Fig. 10 as $x$ moves to the bottom of the panel.
+
+% Fig. 7
 \begin{figure}
 \centering
-\includegraphics[width=9cm]{next-row-view-factor-angles.png}
-\caption{Example of readable plot using different colors and line styles for clarity.}
+\includegraphics[width=9cm]{ground_diffuse_front_w-next_row.png}
+\caption{Ground view factor adjustment and shadeline on the front surface of a rack tilted at 20\degree\ facing 250\degree\ and located at a latitude and longitude of (37.85\degree, -122.25\degree).}
 \end{figure}
 
-When referencing a journal article \cite{Mikofski_8547323}, a conference
-digest article \cite{Mikofski_8547323} or a book \cite{Mikofski_8547323}, place the reference numbers within square
-brackets. To simultaneously cite these references \cite{Mikofski_8547323} - \cite{Mikofski_8547323} use the format just demonstrated. The reference list is the last section and references are listed in the order cited. Use 9 point Times. The paragraph description is set for a line spacing of exactly 10 points with 0 point spacing before and after. A 0.25 inch hanging indention should be specified. 
+% Fig. 8
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{ground_diffuse_back_w-next_row.png}
+\caption{Ground view factor adjustment and shadeline on the back surface of a rack tilted at 160\degree\ facing 70\degree\ and located at a latitude and longitude of (37.85\degree, -122.25\degree).}
+\end{figure}
 
-Generally speaking, references should be very detailed. For journal articles, list all authors by initials and last name, the title of the paper in quotations (capitalizing only the first letter of the first word, unless it would be capitalized in a sentence, e.g., a proper noun), the journal name in italics, the volume number, the issue number, the page numbers, and the date. Use the examples provided \cite{Mikofski_8547323} - \cite{Mikofski_8547323} as a guide. 
+% Fig. 9
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{sky_diffuse_front_w-next_row.png}
+\caption{Sky view factor adjustment and shadeline on the front surface of a rack tilted at 20\degree\ facing 250\degree\ and located at a latitude and longitude of (37.85\degree, -122.25\degree).}
+\end{figure}
+
+% Fig. 10
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{sky_diffuse_back_w-next_row.png}
+\caption{Sky view factor adjustment and shadeline on the back surface of a rack tilted at 160\degree\ facing 70\degree\ and located at a latitude and longitude of (37.85\degree, -122.25\degree).}
+\end{figure}
+
+We split the surface into shade and light, integrate over each part, and add them together.  The shadeline $x_{shade}$ separating shade from light is given by the fraction, $F_x$, of the rack height from the bottom edge of the rack.  The fraction from shadeline to the top of the rack is $F_y = 1 - F_x$. Both $F_x$ and $F_y$ are limited to values between 0 and 1.
+
+% Eq. 14
+\begin{equation}
+F_{x,shade} = 1 - \frac{1}{GCR\left(\cos \beta + \sin\beta \tan\phi \right)}
+\end{equation}
+
+Since the view factors are approximately linear, we estimate the integrals as averages of the view factor adjustments from the endpoints to the shadeline for both the ground and sky to account for the view blocked by the next row.  Recall that at the top of the PV surface the sky view factor adjustment is one, and at the bottom of the ground view factor adjustment is also one.
+
+% Eq. 15, 16, 17, 18
+\begin{align}
+F_{sky,shade} &= \frac{F_{sky,pv,row}\left(x_{shade} \right)+F_{sky,pv,row}\left(0 \right)}{2}\\
+F_{sky,light} &= \frac{F_{sky,pv,row}\left(x_{shade} \right)+1}{2}\\
+F_{gnd,shade} &= \frac{F_{gnd,pv,row}\left(x_{shade} \right)+1}{2}\\
+F_{gnd,light} &= \frac{F_{gnd,pv,row}\left(x_{shade} \right)+F_{gnd,pv,row}\left(1 \right)}{2}
+\end{align}
+
+We sum the diffuse components for the shaded and unshaded sections, but the direct component is only incident in the unshaded section of the surface, $1-F_x$.
+
+% Eq. 19 & 20
+\begin{align}
+F_{sky,row} &= F_xF_{sky,shade}+\left(1-F_x\right)F_{sky,light}\\
+F_{gnd,row} &= F_xF_{gnd,shade}+\left(1-F_x\right)F_{gnd,light}
+\end{align}
+
+% Eq. 20 & 21
+\begin{align}
+POA_{sky,row} &= POA_{sky,shade}F_{sky,row}\\
+POA_{gnd,row} &= POA_{gnd,shade}F_{gnd,row}
+\end{align}
+
+% Eq. 22
+\begin{equation}
+POA_{direct,row} = POA_{direct}\left(1-F_x\right)
+\end{equation}
+
+Finally we apply an incidence angle modifier to the direct component and add the direct and diffuse to get the total POA irradiance on each surface.
+
+% Eq. 23 & 24
+\begin{align}
+POA_{diffuse,row} = POA_{sky,row} + POA_{gnd,row}\\
+POA_{global,row} = POA_{direct,row}IAM + POA_{diffuse,row}
+\end{align}
+
+An incidence angle modifier for diffuse irradiance is ignored, but could be considered by dividing incident diffuse irradiance into discreet bins by angle of incidence \cite{Marion2017}.
+
+\section{Results}
+The bifacial model was integrated into SolarFarmer and used to simulate the NIST test array in Gaithersburg, MD \cite{Mikofski_8547323} with a bifaciality of 80\%, strucural shade of 2\%, and zero transmission.  Electrical mismatch due to non-uniform backside irradiance was ignored.  An equivalent monofacial system was compared to the theoretical bifacial system and both were simulated with varying tilt from 20\degree\ to 40\degree, while all other parameters were constant.  The yield of the theoretical bifacial and equivalent monofacial is shown in Fig. 11.  The optimum tilt for the bifacial system was 30\degree\ but the optimium tilt for the monofacial system was 25\degree.  The bifacial gain, defined as $BG=\frac{Y_{bifacial}}{Y_{mono}}$, was about 10\% adn increased with tilt.
+
+% Fig. 11
+\begin{figure}
+\centering
+\includegraphics[width=9cm]{NIST_bifi-v-mono.png}
+\caption{Theoretical yield from bifacial PV at the NIST test array in Gaithersburg, MD.  Bifaciality was set to 80\% and structural shade was set to 2\%.  Transmission and electrical mismatch due to non-uniform backside irradiance were both ignored.  Tilt was varied from 20\degree\ to 40\degree for both bifacial and equivalent monofacial systems.  The maximum yield for bifacial and monofacial occured at different angles, and the bifacial gain increased with tilt.}
+\end{figure}
+
+
+
 %Further information on LaTeX and TeX can be found in \cite{IEEEhowto:kopka} - \cite{knuth}. 
 
-% The following statement makes the two columns on the last page more
-% or less of equal length.  Placement of this command is by trial and error.
-\vfil\eject
-
-\section{Copyright and Reprint Information}
-The IEEE copyright form will be electronically submitted for this conference.  On the conference web site, follow the link in the manuscript submission area. 
-
-Reprints may be ordered by checking the appropriate box on the conference registration form.  The reprints will be mailed to you at the address listed on the registration form approximately 3 months after the conference.
-
-
 \section{Conclusion}
-Following these instructions will improve the quality of your paper and the PVSC Proceedings. If you have comments, please contact \url{Publications@ieee-pvsc.org}. Please direct questions regarding the electronic submission process to \url{help@SPLTrak.com}. 
+A bifacial model similar to existing two-dimensional view factor models has been integrate into the SolarFarmer PV system performance prediction software.  The model accounts for shade from PV racks on the ground, obstruction of the view factor of the sky from the ground, and blockage of the ground and sky from the PV panels due to adjacent rows.  The view factor of the sky from the ground was estimated using the a zero-height rack configuration because it was observed that rack height had no effect.  However the width of the sun was neglected, and would be expected to shrink the shadow on the ground as the rack height increased.  View factors from the sky and ground on the PV surfaces was observed to be linear and therefore linear approximations and weighted averages were used to approximate the affect of adjacent rows.
+
+When the bifacial model was tested by simulating the NIST test array in Gaithersburg, MD, the bifacial gain over an equivalent monofacial system was about 10\%.  The bifacial gain was observed to increase with tilt,  and it was also observed that the bifacial and monofacial optima occured at different angles.  This is evidence that a simple bifacial model can be used to estimate bifacial gain, and there may be different optimal configurations between between bifacial and monofacial systems which can be determined using a simple bifacial model.
 
 % conference papers do not normally have an appendix
-
 % use section* for acknowledgment
-
-
-
-% conference papers do not normally have an appendix
-
-
-% use section* for acknowledgement
-
-
 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
@@ -645,31 +733,9 @@ Following these instructions will improve the quality of your paper and the PVSC
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
 
-%\begin{thebibliography}{1}
-%\small
-
-%\bibitem {Yamaguchi}
-%M. Yamaguchi, A. Khan, S.J. Taylor, M. Imaizumi, T. Hisamatsu, and S. Matsuda, ``A detailed model to improve the radiation-resistance of Si space solar cells,\emph{Fundamentals of Solar Cells} vol. 46, pp. 2133-2138, 1999.
-
-%\bibitem {Hovel}
-%H. J. Hovel and J. M. Woodall, ``The effect of depletion region recombination currents on the efficiencies of Si and GaAs solar cells'', \emph {in 10th IEEE Photovoltaic Specialist Conference}, p. 25, 1973.
-
-%\bibitem {Fahrenbruch}
-%A. L. Fahrenbruch and R. H. Bube, \emph{Fundamentals of Solar Cells}, New York: Academic Press, 1983.
-
-%\bibitem{IEEEhowto:kopka}
-%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-%\end{thebibliography}
-%\smallskip
-%Note: For the Summary paper submission only, references to the authors own work must be redacted to preserve the new double-blind reviewing requirements.
-
-
-
-
+% The following statement makes the two columns on the last page more
+% or less of equal length.  Placement of this command is by trial and error.
+\vfil\eject
 
 % that's all folks
 \end{document}
-
-
