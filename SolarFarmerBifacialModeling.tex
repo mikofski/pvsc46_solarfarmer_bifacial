@@ -1,4 +1,4 @@
-%!TEX spellcheck = en_US
+% !TEX spellcheck = en_US
 
 %% bare_jrnl.tex
 %% V1.4b
@@ -414,7 +414,7 @@
 
 \begin{abstract}
 %\boldmath
-Bifacial modules are being deployed at large PV systems, because of the potential to increase energy output, but their performance is still uncertain, increasing financial risk.  To address the opportunity that bifacial modules present, we have developed a bifacial performance model and integrated it into a full PV system model to estimate the backside irradiance, combine it with the front side, and predict the total output power.  To understand the effect of bifacial on performance, the NIST test array was simulated with bifacial modules and compared to an equivalent monofacial system while varying tilt from 20\degree\ to 40\degree.  A bifacial gain of 10\% was observed which increased with increasing tilt angle.  The maximum yield occurred at 30\degree\ for the bifacial system, but at 25\degree\ for the monofacial system, demostrating the advantage of modeling bifacial systems to optimize their performance.
+Bifacial modules are being deployed at large PV systems, because of the potential to increase energy output, but their performance is still uncertain, increasing financial risk.  To address the opportunity that bifacial modules present, we have developed a bifacial performance model and integrated it into a full PV system model to estimate the backside irradiance, combine it with the front side, and predict the total output power.  To understand the effect of bifacial on performance, the NIST test array was simulated with bifacial modules and compared to an equivalent monofacial system while varying tilt from 20\degree\ to 40\degree.  A bifacial gain of 10\% was observed which increased with increasing tilt angle.  The maximum yield occurred at 30\degree\ for the bifacial system, but at 25\degree\ for the monofacial system, demonstrating the advantage of modeling bifacial systems to optimize their performance.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -478,7 +478,7 @@ Similar to other models \cite{Marion2017}, \cite{Anoma2017}, we treat both the f
 \label{fig:2d-infinite-sheds}
 \end{figure}
 
-We calculate backside irradiance by treating it as a surface tilted by the supplement of the front surface, and an azimuth that is rotated 180\degree\ around the zenith from the front surface.  The irradiance components for both surfaces can be calculated using any of the transposition models.  Fig. \ref{fig:frontside-transposition} and \ref{fig:backside-transposition} show the irradiance components for the front and back surfaces of a PV rack calculated using several transposition models from pvlib-python \cite{Holmgren2018} with predicted clear sky irradiance at a latitude and longitude of (37.85\degree, -122.25\degree) on the morning of Jan. 1st, 2017.  The front surface is tilted 20\degree\ at an azimuth of 250\degree, so the back surface is tilted at 160\degree\ and the corresponding reference frame is at an azimuth of 70\degree.  The diffuse components are non-zero starting at sunrise at 7:25 PST, but the direct component doesn’t strike the front surface until 8:35 PST because it’s on the back side.
+We calculate backside irradiance by treating it as a surface tilted by the supplement of the front surface, and an azimuth that is rotated 180\degree\ around the zenith from the front surface.  The irradiance components for both surfaces can be calculated using any of the transposition models.  Fig. \ref{fig:frontside-transposition} and \ref{fig:backside-transposition} show the irradiance components for the front and back surfaces of a PV rack calculated using several transposition models from pvlib-python \cite{Holmgren2018} with predicted clear sky irradiance at a latitude and longitude of (37.85\degree, -122.25\degree) on the morning of Jan. 1st, 2017.  The front surface is tilted 20\degree\ at an azimuth of 250\degree, so the back surface is tilted at 160\degree\ and the corresponding reference frame is at an azimuth of 70\degree.  The diffuse components are non-zero starting at sunrise at 7:25 PST, but the direct component doesn't strike the front surface until 8:35 PST because it's on the back side.
 
 % Fig. 2: frontside transposition
 \begin{figure}
@@ -496,7 +496,7 @@ We calculate backside irradiance by treating it as a surface tilted by the suppl
 \label{fig:backside-transposition}
 \end{figure}
 
-Notice in the middle of Fig. \ref{fig:backside-transposition} that the backside diffuse component is significantly overestimated because it doesn’t consider that the PV rack both shades the ground and blocks the sky, therefore reducing incident and reflected irradiance.
+Notice in the middle of Fig. \ref{fig:backside-transposition} that the backside diffuse component is significantly overestimated because it doesn't consider that the PV rack both shades the ground and blocks the sky, therefore reducing incident and reflected irradiance.
 
 \subsection{ Ground Reflection with Shade and Obstructions}
 The diffuse components of the irradiance on the front and back surfaces, shown in Fig. \ref{fig:frontside-transposition} and \ref{fig:backside-transposition}, contain contributions from both the sky and ground reflection.  The ground reflection incident on the plane of array, $POA_{gnd}$, assuming no shading and no blocking, is given by the relation in (\ref{eq:POA-gnd}) below with the global horizontal irradiance ($GHI$), the ground albedo ($\rho$), and the view factor from the ground to the PV surface, $F_{gnd,pv} = \frac{\left(1-\cos\beta\right)}{2}$ \cite{Marion2017}.
@@ -602,7 +602,7 @@ POA_{gnd,shade} = POA_{gnd}\left(F_{sky,gnd} \left(1-df \right) + F_{x \rightarr
 \label{eq:POA-gnd-shade}
 \end{equation}
 
-Note, this still doesn’t account for obstruction by adjacent rows of the view from the front and back PV surfaces to the ground and sky, because the view factor of the ground in (\ref{eq:POA-gnd}) only considers a single row. The next section will consider obstruction by adjacent rows.
+Note, this still doesn't account for obstruction by adjacent rows of the view from the front and back PV surfaces to the ground and sky, because the view factor of the ground in (\ref{eq:POA-gnd}) only considers a single row. The next section will consider obstruction by adjacent rows.
 
 Another important consideration is the effect of the width of the sun on the fraction of shaded ground. The radius of the solar disc is about 4.65-milliradians or 0.266\degree\ which would decrease the size of the shadow as the height above the ground of the PV rack was increased. This effect is not considered in the current work.
 
@@ -712,7 +712,7 @@ POA_{global,row} = POA_{direct,row}IAM + POA_{diffuse,row}
 An incidence angle modifier for diffuse irradiance is ignored, but could be considered by dividing incident diffuse irradiance into discreet bins by angle of incidence \cite{Marion2017}.
 
 \section{Results}
-The bifacial model was integrated into SolarFarmer \cite{Mikofski_8547323} and used to simulate the NIST test array in Gaithersburg, MD \cite{Boyd2017,Boyd2017a,Boyd2017b} with a bifaciality of 80\%, strucural shade of 2\%, and zero transmission.  Electrical mismatch due to non-uniform backside irradiance was ignored.  An equivalent monofacial system was compared to the theoretical bifacial system and both were simulated with varying tilt from 20\degree\ to 40\degree, while all other parameters were constant.  The yields of the theoretical bifacial and equivalent monofacial systems are shown in Fig. \ref{fig:NIST-bifi-v-mono}.  The optimum tilt for the bifacial system was 30\degree\, but the optimium tilt for the monofacial system was 25\degree.  The bifacial gain, defined as $BG=\frac{Y_{bifacial}}{Y_{mono}}-1$, was about 10\% and increased with tilt.
+The bifacial model was integrated into SolarFarmer \cite{Mikofski_8547323} and used to simulate the NIST test array in Gaithersburg, MD \cite{Boyd2017,Boyd2017a,Boyd2017b} with a bifaciality of 80\%, structural shade of 2\%, and zero transmission.  Electrical mismatch due to non-uniform backside irradiance was ignored.  An equivalent monofacial system was compared to the theoretical bifacial system and both were simulated with varying tilt from 20\degree\ to 40\degree, while all other parameters were constant.  The yields of the theoretical bifacial and equivalent monofacial systems are shown in Fig. \ref{fig:NIST-bifi-v-mono}.  The optimum tilt for the bifacial system was 30\degree\, but the optimum tilt for the monofacial system was 25\degree.  The bifacial gain, defined as $BG=\frac{Y_{bifacial}}{Y_{mono}}-1$, was about 10\% and increased with tilt.
 
 % Fig. 11: NIST bifi vs. mono
 \begin{figure}
