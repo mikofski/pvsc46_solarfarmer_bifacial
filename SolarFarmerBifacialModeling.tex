@@ -1,3 +1,5 @@
+%!TEX spellcheck = en_US
+
 %% bare_jrnl.tex
 %% V1.4b
 %% 2015/08/26
@@ -412,7 +414,7 @@
 
 \begin{abstract}
 %\boldmath
-Bifacial modules are being deployed at large PV systems, because of the potential to increase energy output, but their performance is still uncertain, increasing financial risk.  To address the opportunity that bifacial modules present, we have developed a bifacial performance model and integrated it into a full PV system model to estimate the backside irradiance, combine it with the front side, and predict the total output power.  To understand the effect of bifacial on performance, the NIST test array was simulated with bifacial modules and compared to an equivalent monofacial system while varying tilt from 20\degree\ to 40\degree.  A bifacial gain of 10\% was observed which increased with increasing tilt angle.  The maximum yield occured at 30\degree\ for the bifacial system, but at 25\degree\ for the monofacial system, demostrating the advantage of modeling bifacial systems to optimize their performance.
+Bifacial modules are being deployed at large PV systems, because of the potential to increase energy output, but their performance is still uncertain, increasing financial risk.  To address the opportunity that bifacial modules present, we have developed a bifacial performance model and integrated it into a full PV system model to estimate the backside irradiance, combine it with the front side, and predict the total output power.  To understand the effect of bifacial on performance, the NIST test array was simulated with bifacial modules and compared to an equivalent monofacial system while varying tilt from 20\degree\ to 40\degree.  A bifacial gain of 10\% was observed which increased with increasing tilt angle.  The maximum yield occurred at 30\degree\ for the bifacial system, but at 25\degree\ for the monofacial system, demostrating the advantage of modeling bifacial systems to optimize their performance.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -716,7 +718,7 @@ The bifacial model was integrated into SolarFarmer \cite{Mikofski_8547323} and u
 \begin{figure}
 \centering
 \includegraphics[width=9cm]{NIST_bifi-v-mono.png}
-\caption{Theoretical yield from bifacial PV at the NIST test array in Gaithersburg, MD.  Bifaciality was set to 80\% and structural shade was set to 2\%.  Transmission and electrical mismatch due to non-uniform backside irradiance were both ignored.  Tilt was varied from 20\degree\ to 40\degree\ for both bifacial and equivalent monofacial systems.  The maximum yield for bifacial and monofacial occured at different angles, and the bifacial gain increased with tilt.}
+\caption{Theoretical yield from bifacial PV at the NIST test array in Gaithersburg, MD.  Bifaciality was set to 80\% and structural shade was set to 2\%.  Transmission and electrical mismatch due to non-uniform backside irradiance were both ignored.  Tilt was varied from 20\degree\ to 40\degree\ for both bifacial and equivalent monofacial systems.  The maximum yield for bifacial and monofacial occurred at different angles, and the bifacial gain increased with tilt.}
 \label{fig:NIST-bifi-v-mono}
 \end{figure}
 
@@ -727,7 +729,7 @@ The bifacial model was integrated into SolarFarmer \cite{Mikofski_8547323} and u
 \section{Conclusion}
 A bifacial model similar to existing 2-D view factor models has been integrated into the SolarFarmer PV system performance prediction software.  The model accounts for shade from PV racks on the ground, obstruction of the view factor of the sky from the ground, and blockage of the ground and sky from the PV panels due to adjacent rows.  The view factor of the sky from the ground was estimated using the zero-height rack configuration, because it was observed that rack height above the ground had no effect.  However the width of the sun was neglected, and would be expected to shrink the shadow on the ground as the rack height increased.  View factors from the sky and ground on the PV surfaces were observed to be linear, and therefore linear approximations and weighted averages were used to approximate the effect of adjacent rows.
 
-When the bifacial model was used to simulate the NIST test array in Gaithersburg, MD, the bifacial gain over an equivalent monofacial system was about 10\%.  The bifacial gain was observed to increase with tilt, and it was also observed that the bifacial and monofacial optima occured at different angles.  This is evidence that a simple bifacial model can be used to estimate bifacial gain, and that there may be different optimal configurations between bifacial and monofacial systems which can be determined using a simple bifacial model.
+When the bifacial model was used to simulate the NIST test array in Gaithersburg, MD, the bifacial gain over an equivalent monofacial system was about 10\%.  The bifacial gain was observed to increase with tilt, and it was also observed that the bifacial and monofacial optima occurred at different angles.  This is evidence that a simple bifacial model can be used to estimate bifacial gain, and that there may be different optimal configurations between bifacial and monofacial systems which can be determined using a simple bifacial model.
 
 % conference papers do not normally have an appendix
 % use section* for acknowledgment
