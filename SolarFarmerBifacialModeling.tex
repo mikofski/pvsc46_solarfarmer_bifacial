@@ -607,7 +607,7 @@ Note, this still doesn't account for obstruction by adjacent rows of the view fr
 Another important consideration is the effect of the width of the sun on the fraction of shaded ground. The radius of the solar disc is about 4.65-milliradians or 0.266\degree\ which would decrease the size of the shadow as the height above the ground of the PV rack was increased. This effect is not considered in the current work.
 
 \subsection{View Factor Obstruction by Adjacent Row}
-The bottom of the next row obstructs the view of the ground from the PV surface, and the top of the next row obstructs the view of the sky.  The views from a point, $x$, on the PV surface are limited by the angles, $\psi_{top}$ and $\psi_{bottom}$, from the point to the top and bottom of the next row as shown in Fig. \ref{fig:nextrow-vf-angles}.  The POA components from the ground and sky already account for the view factor without the adjacent row.  The view factor of the ground for a single row was used in (\ref{eq:POA-gnd}), and there's a similar expression for the view factor of the sky, $F_{sky,pv}=\frac{\left(1+\cos\beta\right)}{2}$ \cite{Marion2017}. We need to adjust these view factors to account for the slice from $\beta$ to $\psi$, by the ratio of the blocked and unblocked views.
+The bottom of the next row obstructs the view of the ground from the PV surface, and the top of the next row obstructs the view of the sky.  The views from a point, $x$, on the PV surface are limited by the angles, $\psi_{top}$ and $\psi_{bottom}$, from the point to the top and bottom of the next row as shown in Fig. \ref{fig:nextrow-vf-angles}.  The POA components from the ground and sky already account for the view factor without the adjacent row.  The view factor of the ground for a single row was used in (\ref{eq:POA-gnd}), and there's a similar expression for the view factor of the sky, $F_{sky,pv}=\frac{\left(1+\cos\beta\right)}{2}$ \cite{Marion2017} used in the sky diffuse component, $POA_{sky}$. So now we need to adjust these view factors by the ratio of the blocked and unblocked views, to account for just the slice from $\beta$ to $\psi$.
 
 Adjustment to $F_{gnd,pv}$:
 
@@ -627,8 +627,8 @@ We can derive expressions for the angles to the top and bottom of the next row a
 
 % Eq. 12 & 13
 \begin{align}
-\tan \psi_{top}\left(x \right) &= \frac{F_x GCR \sin \beta}{1 + F_x GCR \cos \beta}\\
-\tan \psi_{bottom}\left(x \right) &= \frac{F_y GCR \sin \beta}{1 - F_y GCR \cos \beta}
+\tan \psi_{bottom}\left(x \right) &= \frac{F_x GCR \sin \beta}{1 + F_x GCR \cos \beta}\\
+\tan \psi_{top}\left(x \right) &= \frac{F_y GCR \sin \beta}{1 - F_y GCR \cos \beta}
 \end{align}
 
 Fig. \ref{fig:gnd-front-nextrow}, \ref{fig:gnd-back-nextrow}, \ref{fig:sky-front-nextrow}, and \ref{fig:sky-back-nextrow} show that the ground and sky view factor adjustments are nearly linear from the top to the bottom of the rack.  At the bottom of the PV surface, where $F_x=0$, the ground view factor adjustment is 1, and $\psi_{bottom}=0$.  Then, the ground view factor adjustment decreases by more than 50\% on the front surface in Fig. \ref{fig:gnd-front-nextrow} but less than 10\% on the back surface in Fig. \ref{fig:gnd-back-nextrow}, as $x$ moves to the top of the panel.  At the top of the PV surface, where $F_x=1$, the sky view factor adjustment is 1, and the $\psi_{top}=0$.  Then the sky view factor adjustment decreases by less than 10\% on the front surface in Fig. \ref{fig:sky-front-nextrow}, but more than 50\% on the back surface in Fig. \ref{fig:sky-back-nextrow}, as $x$ moves to the bottom of the panel.
@@ -692,7 +692,7 @@ F_{gnd,row} &= F_xF_{gnd,shade}+\left(1-F_x\right)F_{gnd,light}
 
 % Eq. 20 & 21
 \begin{align}
-POA_{sky,row} &= POA_{sky,shade}F_{sky,row}\\
+POA_{sky,row} &= POA_{sky}F_{sky,row}\\
 POA_{gnd,row} &= POA_{gnd,shade}F_{gnd,row}
 \end{align}
 
