@@ -613,14 +613,14 @@ Adjustment to $F_{gnd,pv}$:
 
 % Eq. 10
 \begin{equation}
-F_{gnd,pv,row}\left(\psi_{bottom} \right) = \frac{\cos \psi_{bottom} - \cos \beta}{1-\cos\beta}
+F_{gnd,pv,row}\left(\psi_{bottom} \right) = \frac{1 - \cos \left(\beta - \psi_{bottom}\right)}{1-\cos\beta}
 \end{equation}
 
 Adjustment to $F_{sky,pv}$:
 
 % Eq. 11
 \begin{equation}
-F_{sky,pv,row}\left(\psi_{top} \right) = \frac{\cos \psi_{top} + \cos \beta}{1+\cos\beta}
+F_{sky,pv,row}\left(\psi_{top} \right) = \frac{1  + \cos \left(\beta + \psi_{top}\right)}{1+\cos\beta}
 \end{equation}
 
 We can derive expressions for the angles to the top and bottom of the next row as a function of an arbitrary position $x$ on the PV surface.
