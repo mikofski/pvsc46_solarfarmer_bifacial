@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: SolarFarmerBifacialModeling.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: IEEEabrv.bib
+Database file #2: bibliography.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 7 entries,
+            4087 wiz_defined-function locations,
+            1396 strings with 19654 characters,
+and the built_in function-call counts, 5140 in all, are:
+= -- 438
+> -- 118
+< -- 24
++ -- 60
+- -- 26
+* -- 273
+:= -- 851
+add.period$ -- 16
+call.type$ -- 7
+change.case$ -- 7
+chr.to.int$ -- 30
+cite$ -- 7
+duplicate$ -- 396
+empty$ -- 397
+format.name$ -- 30
+if$ -- 1170
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 75
+newline$ -- 56
+num.names$ -- 7
+pop$ -- 159
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 401
+stack$ -- 0
+substring$ -- 111
+swap$ -- 312
+text.length$ -- 14
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 7
+warning$ -- 0
+while$ -- 15
+width$ -- 8
+write$ -- 110
