@@ -5,7 +5,7 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches:
-    - main
+    - master
 
 jobs:
   # Single deploy job since we're just deploying
